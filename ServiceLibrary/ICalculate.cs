@@ -3,7 +3,7 @@
 namespace ServiceLibrary
 {
     [ServiceContract]
-    interface ICalculate
+    public interface ICalculate
     {
         [OperationContract]
         double Add(double number1, double number2);
