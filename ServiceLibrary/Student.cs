@@ -2,16 +2,17 @@
 
 namespace ServiceLibrary
 {
-    [DataContract]
+    //DataContract and DataMember attributes are used for the sake of data serialization
+    [DataContract(Namespace ="www.Shrishesh.com/Year2022")]
     public class Student
     {
-        [DataMember]
+        [DataMember(Order =1)]
         public int Id { get; set; }
-        [DataMember]
+        [DataMember(Order = 2)]
         public string Name { get; set; }
-        [DataMember]
+        [DataMember(Order = 3)]
         public string Gender { get; set; }
-        [DataMember]
+        [DataMember(Order = 4)]
         public string City { get; set; }
 
     }
