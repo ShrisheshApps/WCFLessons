@@ -8,9 +8,11 @@ using System.Threading.Tasks;
 namespace ServiceLibrary
 {
     [ServiceContract]
-    public interface IConfidential
+    public interface IStudentInfo
     {
         [OperationContract]
-        string PrivateMessage(string msg);
+        Student GetStudent(int id);
+        [OperationContract]
+        void SaveStudent(Student student);
     }
 }

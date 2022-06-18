@@ -9,7 +9,7 @@ namespace HostConsoleApp
     {
         static void Main(string[] args)
         {
-            ServiceHost host = new ServiceHost(typeof(ServiceLibrary.CalculatorService));
+            ServiceHost host = new ServiceHost(typeof(ServiceLibrary.StudentService));
             host.Open();
             Console.WriteLine("Service started...");
             Console.WriteLine("Press ENTER to stop service...");
