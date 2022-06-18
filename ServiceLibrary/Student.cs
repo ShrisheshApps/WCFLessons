@@ -3,9 +3,13 @@
 namespace ServiceLibrary
 {
     //DataContract and DataMember attributes are used for the sake of data serialization
+    //KnownTypeAttribute allows to consider all derived types of the Student class
     [DataContract(Namespace ="www.Shrishesh.com/Year2022")]
+    [KnownType(typeof(RegularStudent))]
+    [KnownType(typeof(OpenStudent))]
     public class Student
     {
+        // We can set other attributes like Name=, IsRequired etc.
         [DataMember(Order =1)]
         public int Id { get; set; }
         [DataMember(Order = 2)]

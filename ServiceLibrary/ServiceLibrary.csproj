@@ -45,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IStudentInfo.cs" />
+    <Compile Include="OpenStudent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegularStudent.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="StudentService.cs" />
   </ItemGroup>
