@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CalculatorService.cs" />
     <Compile Include="ICalculate.cs" />
+    <Compile Include="IConfidential.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

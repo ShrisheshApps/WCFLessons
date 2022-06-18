@@ -1,6 +1,6 @@
 ﻿namespace ServiceLibrary
 {
-    public class CalculatorService : ICalculate
+    public class CalculatorService : ICalculate, IConfidential
     {
         public double Add(double number1, double number2)
         {
@@ -13,6 +13,11 @@
         public string GetMessage(string message)
         {
             return message;
+        }
+
+        public string PrivateMessage(string msg)
+        {
+            return "This is a confidential message code: " + msg;
         }
     }
 }
