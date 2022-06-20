@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ServiceModel;
 using System.Configuration;
 using System.Data.SqlClient;
 
 namespace ServiceLibrary
 {
+    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class StudentService : IStudentInfo
     {
         Student student = null;

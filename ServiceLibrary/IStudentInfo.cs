@@ -2,6 +2,7 @@
 
 namespace ServiceLibrary
 {
+    
     [ServiceContract]
     public interface IStudentInfo
     {
