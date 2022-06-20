@@ -65,6 +65,47 @@ namespace ServiceLibrary
                     Value = student.City
                 };
                 command.Parameters.Add(prmCity);
+                if (student.GetType() == typeof(RegularStudent))
+                {
+                    student = new RegularStudent();
+                    SqlParameter prmRegularFee = new SqlParameter()
+                    {
+                        ParameterName = "@RegularFees",
+                        Value = ((RegularStudent)student).TotalFees
+                    };
+                    command.Parameters.Add(prmRegularFee);
+                    SqlParameter prmStudentType = new SqlParameter()
+                    {
+                        ParameterName = "@StudentType",
+                        Value = ((RegularStudent)student).Type
+                    };
+                    command.Parameters.Add(prmStudentType);
+                }
+
+                if (student.GetType() == typeof(OpenStudent))
+                {
+                    student = new OpenStudent();
+                    SqlParameter prmHourlyRate = new SqlParameter()
+                    {
+                        ParameterName = "@HourlyRate",
+                        Value = ((OpenStudent)student).HourlyRate
+                    };
+                    command.Parameters.Add(prmHourlyRate);
+                    SqlParameter prmHours = new SqlParameter()
+                    {
+                        ParameterName = "@CourseHours",
+                        Value = ((OpenStudent)student).Hours
+                    };
+                    command.Parameters.Add(prmHours);
+                    SqlParameter prmStudentType = new SqlParameter()
+                    {
+                        ParameterName = "@StudentType",
+                        Value = ((OpenStudent)student).Type
+                    };
+                    command.Parameters.Add(prmStudentType);
+
+                }
+
                 connection.Open();
                 int result = command.ExecuteNonQuery();
 

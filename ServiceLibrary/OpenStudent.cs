@@ -3,7 +3,7 @@
 namespace ServiceLibrary
 {
     [DataContract]
-    class OpenStudent: Student
+    public class OpenStudent: Student
     {
         [DataMember]
         public int Hours { get; set; }

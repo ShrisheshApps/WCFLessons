@@ -18,6 +18,11 @@ namespace ServiceLibrary
         public string Gender { get; set; }
         [DataMember(Order = 4)]
         public string City { get; set; }
+        public StudentType Type { get; set; }
+    }
 
+    public enum StudentType
+    {
+        Regular=1, Open=2
     }
 }
