@@ -31,7 +31,8 @@ namespace ServiceLibrary
                     {
                         student = new RegularStudent()
                         {
-                            Id = Convert.ToInt32(reader["StudentId"]),
+                            //Id = Convert.ToInt32(reader["StudentId"]),
+                            Id = id,
                             Name = reader["Name"].ToString(),
                             Gender = reader["Gender"].ToString(),
                             City = reader["City"].ToString(),
@@ -42,7 +43,8 @@ namespace ServiceLibrary
                     {
                         student = new OpenStudent()
                         {
-                            Id = Convert.ToInt32(reader["StudentId"]),
+                            //Id = Convert.ToInt32(reader["StudentId"]),
+                            Id = id,
                             Name = reader["Name"].ToString(),
                             Gender = reader["Gender"].ToString(),
                             City = reader["City"].ToString(),
