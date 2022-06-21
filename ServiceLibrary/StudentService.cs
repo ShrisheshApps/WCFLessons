@@ -130,3 +130,29 @@ namespace ServiceLibrary
         }
     }
 }
+
+/*
+ * 
+ALTER PROCEDURE [dbo].[spSaveStudent]
+@StudentName nvarchar(50),
+@Gender nvarchar(50),
+@City nvarchar(50),
+@RegularFees int = null,
+@CourseHours int = null,
+@HourlyRate int = null,
+@StudentType int
+AS
+BEGIN
+	INSERT INTO tblStudent VALUES(@StudentName, @Gender, @City,@RegularFees, @CourseHours, @HourlyRate, @StudentType)
+END
+ * */
+
+/*
+ * 
+ALTER PROCEDURE [dbo].[spGetStudent]
+@Id int
+AS
+BEGIN
+	SELECT StudentId, Name, Gender, City, RegularFees, CourseHours, HourlyRate, StudentType FROM tblStudent WHERE StudentId = @Id
+END
+* */
