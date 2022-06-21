@@ -8,7 +8,6 @@ namespace ServiceLibrary
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class StudentService : IStudentInfo
     {
-        
         public Student GetStudent(int id)
         {
             Student student = null;
