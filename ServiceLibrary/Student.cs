@@ -18,6 +18,7 @@ namespace ServiceLibrary
         public string Gender { get; set; }
         [DataMember(Order = 4)]
         public string City { get; set; }
+        [DataMember(Order = 5)]
         public StudentType Type { get; set; }
     }
 

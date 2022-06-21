@@ -1,16 +1,17 @@
 ﻿using System;
-using System.ServiceModel;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.ServiceModel;
 
 namespace ServiceLibrary
 {
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class StudentService : IStudentInfo
     {
-        Student student = null;
+        
         public Student GetStudent(int id)
         {
+            Student student = null;
             string cs = ConfigurationManager.ConnectionStrings["CNX"].ConnectionString;
             using (SqlConnection connection = new SqlConnection(cs))
             {
@@ -27,13 +28,29 @@ namespace ServiceLibrary
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    student = new Student()
+                    if ((StudentType)reader["StudentType"] == StudentType.Regular)
                     {
-                        Id = Convert.ToInt32(reader["StudentId"]),
-                        Name = reader["Name"].ToString(),
-                        Gender = reader["Gender"].ToString(),
-                        City = reader["City"].ToString()
-                    };
+                        student = new RegularStudent()
+                        {
+                            Id = Convert.ToInt32(reader["StudentId"]),
+                            Name = reader["Name"].ToString(),
+                            Gender = reader["Gender"].ToString(),
+                            City = reader["City"].ToString(),
+                            TotalFees = Convert.ToInt32(reader["RegularFees"])
+                        };
+                    }
+                    if ((StudentType)reader["StudentType"] == StudentType.Open)
+                    {
+                        student = new OpenStudent()
+                        {
+                            Id = Convert.ToInt32(reader["StudentId"]),
+                            Name = reader["Name"].ToString(),
+                            Gender = reader["Gender"].ToString(),
+                            City = reader["City"].ToString(),
+                            HourlyRate = Convert.ToInt32(reader["HourlyRate"]),
+                            Hours = Convert.ToInt32(reader["CourseHours"])
+                        };
+                    }
                 }
             }
             return student;
@@ -65,15 +82,16 @@ namespace ServiceLibrary
                     Value = student.City
                 };
                 command.Parameters.Add(prmCity);
+
                 if (student.GetType() == typeof(RegularStudent))
                 {
-                    student = new RegularStudent();
                     SqlParameter prmRegularFee = new SqlParameter()
                     {
                         ParameterName = "@RegularFees",
                         Value = ((RegularStudent)student).TotalFees
                     };
                     command.Parameters.Add(prmRegularFee);
+
                     SqlParameter prmStudentType = new SqlParameter()
                     {
                         ParameterName = "@StudentType",
@@ -84,7 +102,6 @@ namespace ServiceLibrary
 
                 if (student.GetType() == typeof(OpenStudent))
                 {
-                    student = new OpenStudent();
                     SqlParameter prmHourlyRate = new SqlParameter()
                     {
                         ParameterName = "@HourlyRate",
@@ -105,7 +122,6 @@ namespace ServiceLibrary
                     command.Parameters.Add(prmStudentType);
 
                 }
-
                 connection.Open();
                 int result = command.ExecuteNonQuery();
 
