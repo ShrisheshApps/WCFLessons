@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1C7F71FB-3D8D-4521-AAFB-0AA4BCFF4350}</ProjectGuid>
+    <ProjectGuid>{B24CF9DE-A8C6-4530-B632-CE303062F28D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>HostConsoleApp</RootNamespace>
     <AssemblyName>HostConsoleApp</AssemblyName>
@@ -47,13 +47,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ServiceLibrary\ServiceLibrary.csproj">
-      <Project>{e8f7489d-4e5b-464b-8279-eda1f1e41b10}</Project>
-      <Name>ServiceLibrary</Name>
-    </ProjectReference>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\ServiceLibrary\ServiceLibrary.csproj">
+      <Project>{8d26b8ba-0596-4710-8b74-6d515d9c5d5b}</Project>
+      <Name>ServiceLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

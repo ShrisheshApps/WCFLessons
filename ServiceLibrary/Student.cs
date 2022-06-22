@@ -1,29 +1,29 @@
 ﻿using System.Runtime.Serialization;
+using System.ServiceModel;
 
 namespace ServiceLibrary
 {
-    //DataContract and DataMember attributes are used for the sake of data serialization
-    //KnownTypeAttribute allows to consider all derived types of the Student class
-    [DataContract(Namespace ="www.Shrishesh.com/Year2022")]
-    //[KnownType(typeof(RegularStudent))]
-    //[KnownType(typeof(OpenStudent))]
-    public class Student
+    [MessageContract]
+    public class StudentRequest
     {
-        // We can set other attributes like Name=, IsRequired etc.
-        [DataMember(Order =1)]
-        public int Id { get; set; }
-        [DataMember(Order = 2)]
-        public string Name { get; set; }
-        [DataMember(Order = 3)]
-        public string Gender { get; set; }
-        [DataMember(Order = 4)]
-        public string City { get; set; }
-        [DataMember(Order = 5)]
-        public StudentType Type { get; set; }
+        [MessageHeader] 
+        public int Id { get; set; } 
     }
 
-    public enum StudentType
+    [MessageContract] 
+    public class StudentResponse
     {
-        Regular=1, Open=2
+        [MessageBodyMember]
+        public Student student { get; set; }
+    }
+    [DataContract]
+    public class Student
+    {
+        [DataMember]
+        public string Name { get; set; } 
+        [DataMember]
+        public string Gender { get; set; }
+        [DataMember]
+        public string City { get; set; } 
     }
 }
