@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace HostConsoleApp
 {
-    public static class Program
+    class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
             ServiceHost host = new ServiceHost(typeof(ServiceLibrary.StudentService));
             host.Open();

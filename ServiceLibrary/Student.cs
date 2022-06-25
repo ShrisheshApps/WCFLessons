@@ -19,11 +19,11 @@ namespace ServiceLibrary
     [DataContract]
     public class Student
     {
-        [DataMember]
+        [DataMember(Order =1)]
         public string Name { get; set; } 
-        [DataMember]
+        [DataMember(Order = 2)]
         public string Gender { get; set; }
-        [DataMember]
+        [DataMember(Order = 3)]
         public string City { get; set; } 
     }
 }
