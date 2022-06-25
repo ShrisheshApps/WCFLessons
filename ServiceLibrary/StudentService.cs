@@ -9,11 +9,9 @@ namespace ServiceLibrary
             StudentRequest req = new StudentRequest();
             req.Id = request.Id;
             StudentResponse r = new StudentResponse();
-            Student s = new Student();
-            s.Name = "Shrishesh";
-            s.Gender = "Male";
-            s.City = "Agra";
-            r.student = s;
+            r.Name = "Shrishesh";
+            r.Gender = "Male";
+            r.City = "Agra";
             return r;
         }
         

@@ -3,18 +3,32 @@ using System.ServiceModel;
 
 namespace ServiceLibrary
 {
-    [MessageContract]
+    [MessageContract(IsWrapped =true)]
     public class StudentRequest
     {
         [MessageHeader] 
         public int Id { get; set; } 
     }
 
-    [MessageContract] 
+    [MessageContract(IsWrapped = true)]
     public class StudentResponse
     {
-        [MessageBodyMember]
-        public Student student { get; set; }
+        public StudentResponse()
+        {
+
+        }
+        public StudentResponse(Student student)
+        {
+            this.Name = student.Name;
+            this.Gender = student.Gender;
+            this.City = student.City;
+        }
+        [MessageBodyMember(Order = 1)]
+        public string Name { get; set; }
+        [MessageBodyMember(Order = 2)]
+        public string Gender { get; set; }
+        [MessageBodyMember(Order = 3)]
+        public string City { get; set; }
     }
     [DataContract]
     public class Student
